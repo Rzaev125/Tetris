@@ -1,0 +1,159 @@
+.app {
+  display: grid;
+  height: 97vh;
+  grid-template-areas:
+    ". title ."
+    ". game controls";
+  grid-template-columns: repeat(3, 1fr);
+  }
+
+  .video-background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1000;
+    overflow: hidden;
+  }
+
+  #myVideo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1000;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  
+  .logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+    grid-area: title;
+    margin: 0 auto -60px auto;
+  
+    &:hover {
+      filter: drop-shadow(0 0 2em #646cffaa);
+    }
+    &.react:hover {
+      filter: drop-shadow(0 0 2em #61dafbaa);
+    }
+  }
+
+  @property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  @keyframes spin {
+    from {
+      --angle: 0deg;
+    }
+    to {
+      --angle: 360deg;
+    }
+  }
+
+  button {
+    background-color: black;
+    background: linear-gradient(to left,
+        indigo,
+        blue,
+        green,
+        yellow,
+        orange, 
+        red);
+      -webkit-background-clip:text;
+    color: transparent;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 8px 16px;
+    border-image: conic-gradient(from var(--angle), red, orange, yellow, green, blue, indigo) 1;
+    animation: 1s spin linear infinite;
+    border-width: 4px;
+  }
+  
+  .board {
+    border: 2px solid black;
+    user-select: none;
+    margin: auto;
+    grid-area: game;
+    height:max-content;
+  }
+  
+  .controls {
+    grid-area: controls;
+    
+    h2 {
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      background: linear-gradient(to left,
+        indigo,
+        blue,
+        green,
+        yellow,
+        orange, 
+        red);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  .upcoming {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  .cell {
+    width: 27px;
+    aspect-ratio: 1;
+    border: 1px solid black;
+  }
+  
+  .cell.hidden {
+    visibility: hidden;
+  }
+  
+  .cell.Empty {
+    background-color: rgb(200, 200, 200);
+  }
+  
+  .cell.I {
+    background-color: rgb(80, 227, 230);
+  }
+  
+  .cell.J {
+    background-color: rgb(36, 95, 223);
+  }
+  
+  .cell.L {
+    background-color: rgb(223, 173, 36);
+  }
+  
+  .cell.O {
+    background-color: rgb(223, 217, 36);
+  }
+  
+  .cell.S {
+    background-color: rgb(48, 211, 56);
+  }
+  
+  .cell.T {
+    background-color: rgb(132, 61, 198);
+  }
+  
+  .cell.Z {
+    background-color: rgb(227, 78, 78);
+  }
